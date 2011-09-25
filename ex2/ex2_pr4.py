@@ -18,7 +18,6 @@ def eval(n, x, t, a):
 def f(x):
     return x/(1/4.0 + x**2)
 
-
 def main():
     col = ['r', 'b']
     for k in range(2):
@@ -44,12 +43,14 @@ def main():
         for i in linspace(0,100,101):
             y_eval[i] = eval(n,x,x_101[i],a)
         plot(x_101,abs(y_eval-y_101), col[k])
-#plot(x_101, y_101)
-#plot(x_101, y_eval, 'r')
-        xlim(min(x_101),max(x_101))
+        #plot(x_101,y_eval, col[k])
+    #plot(x_101, y_101, 'k')
+    xlim(min(x_101),max(x_101))
+    #legend(('approx. using equidistant nodes','approx. using Chebyshev \
+#nodes','serpentine curve'),loc=2)
+    legend(('approx. using equidistant nodes','approx. using Chebyshev \
+nodes'),loc=2)
     show()
-
-
 
 if __name__ == "__main__":
     main()
