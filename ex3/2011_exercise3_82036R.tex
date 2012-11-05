@@ -1,0 +1,159 @@
+% vim:tw=0
+% vim:fdm=syntax
+\documentclass[a4paper,12pt]{scrartcl}
+\usepackage{mythesis}
+%
+\author{Sakari Cajanus}
+\studentnumber{82036R}
+\email{sakari.cajanus@aalto.fi}
+
+\title{Exercise Round 2}{Och samma på English}
+\place{Espoo}
+\thesisdegree{S-114.1100 Computational Science}{Bachelor's Thesis}
+%\instructor{FT Mari Myllymäki}{Ph.D. Mari Myllymäki}
+%\supervisor{TkT Markus Turunen}{D.Sc. (Tech.) Markus Turunen}
+
+\uni{Aalto-yliopisto}{Aalto University}
+\school{sähkötekniikan korkeakoulu}{School of Electrical Engineering}
+\degreeprogram{Bioinformaatioteknologia}{Bioinformation technology}
+\department{Lääketieteellisen tekniikan ja laskennallisen tieteen laitos}{Department of Biomedical Engineering and Excellence in Computational Science}
+\keywords{suomeksi}{englanniksi}
+
+\hypersetup{%
+    colorlinks=true, linktocpage=false, pdfstartpage=1, pdfstartview=FitV,%
+    % uncomment the following line if you want to have black links (e.g., for printing)
+    %colorlinks=false, linktocpage=false, pdfborder={0 0 0}, pdfstartpage=3, pdfstartview=FitV,% 
+    breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
+    plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
+    hypertexnames=true, pdfhighlight=/O,%hyperfootnotes=true,%nesting=true,%frenchlinks,%
+    urlcolor=blue, linkcolor=blue, citecolor=green, %pagecolor=RoyalBlue,%
+    %urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
+    pdftitle={\thetitle},%the title
+    pdfauthor={\theauthor},%your name
+    pdfsubject={\thetitle},%
+    pdfkeywords={\thekeywords},%
+    pdfcreator={XeLaTeX},%
+    pdfproducer={A happy XeLaTeX user}%
+}
+
+\begin{document}
+%\pagenumbering{roman}
+\maketitlepage
+\clearpage
+\pagenumbering{arabic}
+\section{Plots and conclusions}
+In problem 3 we were asked to evaluate three integrals
+\begin{enumerate}[(i.)]
+    \item $\displaystyle \int_0^2 \! \frac{1}{1+x} \, \mathrm{d} x = \ln{(1+x)}\bigg\rvert_{x=0}^2$\\
+    \item $\displaystyle \int_0^1 \! \mathrm{e}^x \, \mathrm{d} x = \mathrm{e}^x\bigg\rvert_{x=0}^1$\\
+    \item $\displaystyle \int_0^1 \! \sqrt{x} \, \mathrm{d} x = \frac{2}{3}x^{3/2}\bigg\rvert_{x=0}^1$
+\end{enumerate}
+using Romberg algorithm. The exact value of the integrals was known: the
+value calculated using Romberg algorithm was then compared to the exact
+value.
+
+For the first two integrals the approximation R(5,5) is good:
+\begin{verbatim}
+1.33333333 0.00000000 0.00000000 0.00000000 0.00000000 0.0000000000
+1.16666667 1.11111111 0.00000000 0.00000000 0.00000000 0.0000000000
+1.11666667 1.10000000 1.09925926 0.00000000 0.00000000 0.0000000000
+1.10321068 1.09872535 1.09864037 1.09863055 0.00000000 0.0000000000
+1.09976770 1.09862004 1.09861302 1.09861259 1.09861252 0.0000000000
+1.09890152 1.09861279 1.09861230 1.09861229 1.09861229 1.0986122898
+True value: 1.0986122887
+\end{verbatim}
+The first integral is correct to 8 decimals.
+\begin{verbatim}
+1.85914091 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000000000
+1.75393109 1.71886115 0.00000000 0.00000000 0.00000000 0.00000000000000
+1.72722190 1.71831884 1.71828269 0.00000000 0.00000000 0.00000000000000
+1.72051859 1.71828415 1.71828184 1.71828183 0.00000000 0.00000000000000
+1.71884113 1.71828197 1.71828183 1.71828183 1.71828183 0.00000000000000
+1.71842166 1.71828184 1.71828183 1.71828183 1.71828183 1.71828182845905
+True value: 1.71828182845905
+\end{verbatim}
+The second integral is correct to (at least) 14 decimals. However,
+\begin{verbatim}
+0.500000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.00000000
+0.603553 0.638071 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.00000000
+0.643283 0.656526 0.657757 0.000000 0.000000 0.000000 0.000000 0.000000 0.00000000
+0.658130 0.663079 0.663516 0.663608 0.000000 0.000000 0.000000 0.000000 0.00000000
+0.663581 0.665398 0.665553 0.665585 0.665593 0.000000 0.000000 0.000000 0.00000000
+0.665559 0.666218 0.666273 0.666284 0.666287 0.666288 0.000000 0.000000 0.00000000
+0.666271 0.666508 0.666527 0.666531 0.666532 0.666533 0.666533 0.000000 0.00000000
+0.666526 0.666611 0.666617 0.666619 0.666619 0.666619 0.666619 0.666619 0.00000000
+0.666617 0.666647 0.666649 0.666650 0.666650 0.666650 0.666650 0.666650 0.66664993
+True value: 0.6666666667
+
+\end{verbatim}
+the third integral is only correct to 4 decimals, even when using
+Romberg array of size R(8,8). This is because the derivative of the
+function $\sqrt{x}$ 
+\begin{align*}
+    \frac{\mathrm{d}}{\mathrm{d}x}\sqrt{x}=\frac{1}{2\sqrt{x}}
+\end{align*}
+cannot be calculated at $x=0$. Figure \ref{fig:derivative}
+shows the behavious of the derivative in our range $[0,1]$
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.7\textwidth]{derivative}
+  \caption{As $x$ approaches zero from right, the derivative approaches
+infinity.}
+  \label{fig:derivative}
+\end{figure}
+
+\noindent Evaluating the integral from 0.1 (where the derivative already
+gets ``sane'' values) to 1, the problems dissipate:
+\begin{verbatim}
+0.592302 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.0000000000
+0.629880 0.642406 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.0000000000
+0.641287 0.645089 0.645267 0.000000 0.000000 0.000000 0.000000 0.000000 0.0000000000
+0.644466 0.645526 0.645556 0.645560 0.000000 0.000000 0.000000 0.000000 0.0000000000
+0.645301 0.645580 0.645583 0.645584 0.645584 0.000000 0.000000 0.000000 0.0000000000
+0.645514 0.645584 0.645585 0.645585 0.645585 0.645585 0.000000 0.000000 0.0000000000
+0.645567 0.645585 0.645585 0.645585 0.645585 0.645585 0.645585 0.000000 0.0000000000
+0.645580 0.645585 0.645585 0.645585 0.645585 0.645585 0.645585 0.645585 0.0000000000
+0.645584 0.645585 0.645585 0.645585 0.645585 0.645585 0.645585 0.645585 0.6455848156
+True value: 0.6455848156
+\end{verbatim}
+\clearpage
+\section{Plots and Conclusions}
+Figure \ref{fig:partition1} shows the behaviour of Simpson algorithm for
+evaluating integral
+\begin{align}\label{eka}
+    \int_0^1\frac{4}{1+x^2}\mathrm{d}x.
+\end{align}
+The divisions shown show the Simpson's rule division of one Simpson's rule,
+to which the function value calculated using two Simpson's rules is
+compared. This means that the evaluations are one step size more accurate
+than the figures shown.
+
+Similarly, figure \ref{fig:partition2} shows the same procedure for integral
+\begin{align}\label{toka}
+    \int_0^{2\pi}\frac{\cos(2x)}{\mathrm{e}^x}\mathrm{d}x.
+\end{align}
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=.9\textwidth]{partition1}
+\caption{Behaviour of adaptive Simpson's algorithm for integral \ref{eka}.}
+  \label{fig:partition1}
+\end{figure}
+\clearpage
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=.9\textwidth]{partition2}
+\caption{Behaviour of adaptive Simpson's algorithm for integral \ref{toka}.}
+  \label{fig:partition2}
+\end{figure}
+\clearpage
+\appendix
+\lstset{basicstyle=\ttfamily, numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt}
+\gdef\thesection{Appendix \arabic{section}.}
+\clearpage
+
+\section{Code\label{LiiteA}}
+\lstinputlisting[language=python]{ex3_pr3.py}
+\clearpage
+\section{Code\label{LiiteB}}
+\lstinputlisting[language=python]{ex3_pr5.py}
+\end{document}

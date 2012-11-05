@@ -1,0 +1,86 @@
+% vim:tw=0
+% vim:fdm=syntax
+\documentclass[a4paper,12pt]{scrartcl}
+\usepackage{mythesis}
+%
+\author{Sakari Cajanus}
+\studentnumber{82036R}
+\email{sakari.cajanus@aalto.fi}
+
+\title{Exercise Round 5}{Och samma på English}
+\place{Espoo}
+\thesisdegree{S-114.1100 Computational Science}{Bachelor's Thesis}
+%\instructor{FT Mari Myllymäki}{Ph.D. Mari Myllymäki}
+%\supervisor{TkT Markus Turunen}{D.Sc. (Tech.) Markus Turunen}
+
+\uni{Aalto-yliopisto}{Aalto University}
+\school{sähkötekniikan korkeakoulu}{School of Electrical Engineering}
+\degreeprogram{Bioinformaatioteknologia}{Bioinformation technology}
+\department{Lääketieteellisen tekniikan ja laskennallisen tieteen laitos}{Department of Biomedical Engineering and Excellence in Computational Science}
+\keywords{suomeksi}{englanniksi}
+
+\hypersetup{%
+    colorlinks=true, linktocpage=false, pdfstartpage=1, pdfstartview=FitV,%
+    % uncomment the following line if you want to have black links (e.g., for printing)
+    %colorlinks=false, linktocpage=false, pdfborder={0 0 0}, pdfstartpage=3, pdfstartview=FitV,% 
+    breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
+    plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
+    hypertexnames=true, pdfhighlight=/O,%hyperfootnotes=true,%nesting=true,%frenchlinks,%
+    urlcolor=blue, linkcolor=blue, citecolor=green, %pagecolor=RoyalBlue,%
+    %urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
+    pdftitle={\thetitle},%the title
+    pdfauthor={\theauthor},%your name
+    pdfsubject={\thetitle},%
+    pdfkeywords={\thekeywords},%
+    pdfcreator={XeLaTeX},%
+    pdfproducer={A happy XeLaTeX user}%
+}
+
+\begin{document}
+%\pagenumbering{roman}
+\maketitlepage
+\clearpage
+\pagenumbering{arabic}
+\addtocounter{section}{4}
+\section{Plots and conclusions}
+Figures show the calculated values, code is given in the appendices. The matlab calculation was made using fuction \emph{csapi}: because of this, there's slight difference in endpoints. The matlab toolbox Spline built-in function csapi uses not-a-knot end conditions while the python code assumes that the function continues linearly (the second derivative is zero).
+
+In the not-a-knot end condition case, third derivative between last and second last points is assumed to be continuous (and of course constant, in the case of cubic spline).
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.7\textwidth]{function}
+  \caption{Estimated function values from the python code}
+  \label{fig:function}
+\end{figure}
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.7\textwidth]{derivative}
+  \caption{Estimated derivative values from the python code}
+  \label{fig:derivative}
+\end{figure}
+\clearpage
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.7\textwidth]{function_m}
+  \caption{Estimated function values from Matlab}
+  \label{fig:function_m}
+\end{figure}
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.7\textwidth]{derivative_m}
+  \caption{Estimated derivative values from Matlab}
+  \label{fig:derivative_m}
+\end{figure}
+\clearpage
+\appendix
+\lstset{basicstyle=\ttfamily, numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt}
+\gdef\thesection{Appendix \arabic{section}.}
+\clearpage
+
+\section{Code\label{LiiteA}}
+\lstinputlisting[language=python]{ex5_pr4.py}
+\clearpage
+\section{Code\label{LiiteB}}
+\lstinputlisting[language=matlab]{spline.m}
+\clearpage
+\end{document}

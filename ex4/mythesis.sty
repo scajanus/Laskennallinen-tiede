@@ -1,0 +1,218 @@
+\ProvidesPackage{mythesis}[2011/09/11 Version 0.1]
+
+\usepackage{titlesec}
+%\usepackage[finnish]{babel}
+\usepackage[english]{babel}
+\usepackage{babelbib}
+\usepackage{enumerate}
+\usepackage{enumerate}
+\usepackage{mathpazo}
+%\selectbiblanguage{finnish}
+% \usepackage[finnish]{polyglossia}
+% \setdefaultlanguage{finnish}
+\clubpenalty = 1000
+\widowpenalty = 1000
+\usepackage{xunicode}
+\usepackage{fontspec}
+\defaultfontfeatures{Mapping=tex-text}
+\usepackage{changepage}
+\usepackage{xltxtra,fontspec}
+\usepackage{url}%forXeTextobreaklongURLsatlineending
+\usepackage{multicol}%erlaubtesmit\beginund\endTeilbereichemehrspaltigzusetzen
+\usepackage{graphicx}%supportofJPG,PNGundPDF−Grafics
+\usepackage{wrapfig}%umflosseneGrafikenimFließtext
+\usepackage{verbatim}
+\usepackage{picinpar}
+\usepackage{titling}
+%\usepackage[german]{varioref}%betterreferences
+%\usepackage[wide]{sidecap}%ermöglichtseitlicheBeschriftungvonAbbildungenundTabellen
+\usepackage{ccaption}%AnpassungsmöglichkeitenfürAbbildungsbezeichnungen
+%\usepackage{capt−of}
+\usepackage[colorlinks,linkcolor=blue]{hyperref}%referecesaslinks/URLsinthePDF
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{tabularx}
+\usepackage{lastpage}
+
+\setmainfont[Ligatures={Common}, Numbers={OldStyle}]{Linux Libertine O}
+%\setmainfont{Linux Libertine O}
+%\setromanfont{Linux Libertine O}%
+\setsansfont{Linux Biolinum O}%
+\setmonofont[Scale=0.8]{Inconsolata}%
+
+%% Vaakasuunnan mitat, ÄLÄ KOSKE!
+\setlength{\hoffset}{-1in}
+\setlength{\oddsidemargin}{35mm}
+\setlength{\evensidemargin}{25mm}
+\setlength{\textwidth}{15cm}
+%% Pystysuunnan mitat, ÄLÄ KOSKE!
+\setlength{\voffset}{-1in}
+\setlength{\headsep}{7mm}
+\setlength{\headheight}{1em}
+\setlength{\topmargin}{25mm-\headheight-\headsep}
+\setlength{\textheight}{23cm}
+
+
+%\renewcommand*{\author}[1]{\newcommand*{\authorname}{#1}}% User command
+\newcommand*{\place}[1]{\newcommand*{\theplace}{#1}}% User command
+\newcommand*{\studentnumber}[1]{\newcommand*{\thestudentnumber}{#1}}% User command
+\newcommand*{\email}[1]{\newcommand*{\theemail}{#1}}% User command
+
+\renewcommand*{\title}[2]{% User command
+ \newcommand*{\thetitle}{#1}%
+ \newcommand*{\thetitle@en}{#2}}
+
+\newcommand*{\thesisdegree}[2]{% User command
+ \newcommand*{\thethesisdegree}{#1}%
+ \newcommand*{\thethesisdegree@en}{#2}}
+
+\newcommand*{\degreeprogram}[2]{% User command
+ \newcommand*{\thedegreeprogram}{#1}%
+ \newcommand*{\thedegreeprogram@en}{#2}}
+
+\newcommand*{\department}[2]{% User command
+ \newcommand*{\thedepartment}{#1}%
+ \newcommand*{\thedepartment@en}{#2}}
+
+\newcommand*{\keywords}[2]{% User command
+ \newcommand*{\thekeywords}{#1}%
+ \newcommand*{\thekeywords@en}{#2}}
+
+\newcommand*{\uni}[2]{% User command
+ \newcommand*{\theuni}{#1}
+ \newcommand*{\theuni@en}{#2}}
+
+\newcommand*{\school}[2]{% User command
+ \newcommand*{\theschool}{#1}
+ \newcommand*{\theschool@en}{#2}}
+
+%\titleformat{\section}{\huge}{Exercise \thesection}{10pt}{}
+\gdef\thesection{Problem \arabic{section}.}
+
+\newcommand{\maketitlepage}{
+\thispagestyle{empty}
+\begin{titlepage}
+\begin{adjustwidth}{-20mm}{-10mm}
+\begin{center}
+\begin{flushright}%
+\textsc\theauthor\\
+\thestudentnumber\\
+\theemail
+\end{flushright}
+\vspace{8cm}
+
+\textsc{\LARGE \thetitle}\\
+%\LARGE\textsc{\thetitle}\\
+\rule{160mm}{.5mm}\\
+\vspace{1mm}
+\textsc{\normalsize{\thethesisdegree}}\\
+
+\vfill
+\normalsize{\today}
+\end{center}
+\end{adjustwidth}
+\end{titlepage}
+\clearpage
+}
+
+\newenvironment{abstractpage}{
+ \clearpage
+ \enlargethispage{5mm}%
+ \phantomsection\addcontentsline{toc}{section}{Tiivistelmä}%
+ \noindent
+ \begin{minipage}{.5\linewidth}%
+  \begin{flushleft}%
+   \textsc{\theuni\\\theschool}
+  \end{flushleft}%
+ \end{minipage}
+ \begin{minipage}{.49\linewidth}%
+  \begin{flushright}%
+   \textsc{\thethesisdegree n\\tiivistelmä}%
+  \end{flushright}%
+ \end{minipage}\vspace{3mm}\\
+ \begin{tabular}{|p{\linewidth-13pt}|@{}}
+  \hline\vspace{-2mm}
+    Tekijä: \theauthor\\\\
+    Työn nimi: \thetitle\\\\
+  \begin{minipage}{0.33\textwidth}
+   \begin{flushleft}
+    Päivämäärä: 11.9.2011
+   \end{flushleft}
+  \end{minipage}
+  \begin{minipage}{0.33\textwidth}
+   \begin{center}
+    Kieli: suomi
+   \end{center}
+  \end{minipage}
+  \begin{minipage}{0.3\textwidth}
+   \begin{flushright}
+    Sivumäärä: \hyperlink{abstractend}{5}+\pageref{LastPage}
+   \end{flushright}
+  \end{minipage}
+  \vspace{-3mm}\\\hline\vspace{-2mm}
+    Tutkinto-ohjelma: \thedegreeprogram
+  \vspace{1.35mm}\\\hline\vspace{-2mm}
+    Vastuuopettaja: \thesupervisor\\\\
+    Ohjaaja: \theinstructor
+  \vspace{1.35mm}\\\hline
+  %\hline\vspace{1mm}\noindent
+  \vspace{-2mm}
+  }{%
+  \vspace{90mm}
+  \\\hline\vspace{-2mm}
+    Avainsanat: \thekeywords
+  \vspace{1.35mm}\\\hline
+ \end{tabular}
+ \clearpage
+}
+\newenvironment{abstractpage@en}{
+ \clearpage
+ \enlargethispage{5mm}%
+ \phantomsection\addcontentsline{toc}{section}{Tiivistelmä (englanniksi)}%
+ \noindent
+ \begin{minipage}{.5\linewidth}%
+  \begin{flushleft}%
+   \textsc{\theuni@en\\\theschool@en}
+  \end{flushleft}%
+ \end{minipage}
+ \begin{minipage}{.49\linewidth}%
+  \begin{flushright}%
+   \textsc{Abstract of the\\\thethesisdegree@en}%
+  \end{flushright}%
+ \end{minipage}\vspace{3mm}\\
+ \begin{tabular}{|p{\linewidth-13pt}|}
+  \hline\vspace{-2mm}
+    Author: \theauthor\\\\
+    Title: \thetitle@en\\\\
+  \begin{minipage}{0.33\textwidth}
+   \begin{flushleft}
+    Date: 11.9.2011
+   \end{flushleft}
+  \end{minipage}
+  \begin{minipage}{0.33\textwidth}
+   \begin{center}
+    Language: Finnish
+   \end{center}
+  \end{minipage}
+  \begin{minipage}{0.3\textwidth}
+   \begin{flushright}
+    Number of Pages: \hyperlink{abstractend}{5}+\pageref{LastPage}
+   \end{flushright}
+  \end{minipage}
+  \vspace{-3mm}\\\hline\vspace{-2mm}
+    Degree programme: \thedegreeprogram@en
+  \vspace{1.35mm}\\\hline\vspace{-2mm}
+    Supervisor: \thesupervisor@en\\\\
+    Instructor: \theinstructor@en
+  \vspace{1.35mm}\\\hline
+  %\hline\vspace{1mm}\noindent
+  \vspace{-2mm}
+  \noindent%
+  }{%
+  \vspace{131mm}
+  \\\hline\vspace{-2mm}
+    Keywords: \thekeywords@en
+  \vspace{1.35mm}\\\hline
+ \end{tabular}
+ \clearpage
+}
